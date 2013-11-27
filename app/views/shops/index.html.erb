@@ -15,7 +15,8 @@
 
 						<% if params[:q].present? %>
 							<div class="distance">
-								<%= shop.distance_to(params[:q]).round(2) %> km away
+								<%= shop.distance_to(params[:q]).round(2) %> km away,
+								<%= walking_speed(shop, params[:q]) %> mins away
 							</div>
 						<% end %>
 
