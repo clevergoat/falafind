@@ -1,0 +1,33 @@
+<section id="info">
+			<div class="wrap">
+				<header>
+					<h1>Falafind</h1>
+					<h2>London's best falafel</h2>
+				</header>
+
+				<ul>
+
+					<% @shops.each do |shop| %>
+
+						<li data-lat="<%= shop.latitude %>" data-lng="<%= shop.longitude %>" class="<%= shop.colour %>">
+						<h3><%= shop.name %></h3>
+						<p><%= shop.address %></p>
+
+						<% if params[:q].present? %>
+							<div class="distance">
+								<%= shop.distance_to(params[:q]).round(2) %> km away
+							</div>
+						<% end %>
+
+					</li>
+
+					<% end %>
+				</ul>
+
+				<form action="/" method="get">
+					<input type="search" name="q" value="<%= params[:q] %>">
+				</form>
+
+				<%= link_to "Add New Shop", new_shop_path, class: "button" %>
+						</section>
+		<section id="map"></section>
